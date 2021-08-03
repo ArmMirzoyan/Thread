@@ -10,16 +10,36 @@ public class Main extends Thread {
     @Override
     public void run() {
         while (flag) {
-            System.out.println("My infinite loop " + count);
+            System.out.println("My infinite loop by Thread-0, num: " + count);
             count++;
-            if (count == 100) {
-                stopThread();
-            }
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws MyException {
+        System.out.println("Thread " + Thread.currentThread().getName() + " ");
+        System.out.println(Thread.currentThread().getName() + " is a " + Thread.currentThread().getState());
+
         Main obj = new Main();
         obj.start();
+
+        System.out.println(obj.getName() + " " + obj.getState());
+
+        try {
+            Thread.sleep(4);
+        } catch (InterruptedException e) {
+            throw new MyException(e.getMessage());
+        }
+        System.out.println(obj.getName() + " " + obj.getState());
+
+        System.out.println("Try to stop Thread-0");
+        obj.stopThread();
+
+        try {
+            Thread.sleep(5);
+        } catch (InterruptedException e) {
+            throw new MyException(e.getMessage());
+        }
+
+        System.out.println(obj.getName() + " " + obj.getState());
     }
 }
