@@ -35,7 +35,7 @@ public class Main extends Thread {
         obj.stopThread();
 
         try {
-            Thread.sleep(5);
+            obj.join();
         } catch (InterruptedException e) {
             throw new MyException(e.getMessage());
         }
