@@ -20,12 +20,13 @@ public class Main extends Thread {
         System.out.println(Thread.currentThread().getName() + " is a " + Thread.currentThread().getState());
 
         Main obj = new Main();
+        System.out.println(obj.getName() + " " + obj.getState());
         obj.start();
 
         System.out.println(obj.getName() + " " + obj.getState());
 
         try {
-            Thread.sleep(4);
+            Thread.sleep(5);
         } catch (InterruptedException e) {
             throw new MyException(e.getMessage());
         }
