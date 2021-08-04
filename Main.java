@@ -1,32 +1,17 @@
-public class Main extends Thread {
-
-    private boolean flag = true;
-    private int count = 0;
-
-    public void stopThread() {
-        flag = false;
-    }
-
-    @Override
-    public void run() {
-        while (flag) {
-            System.out.println("My infinite loop by Thread-0, num: " + count);
-            count++;
-        }
-    }
+public class Main {
 
     public static void main(String[] args) throws MyException {
         System.out.println("Thread " + Thread.currentThread().getName() + " ");
         System.out.println(Thread.currentThread().getName() + " is a " + Thread.currentThread().getState());
 
-        Main obj = new Main();
+        CustomThread obj = new CustomThread();
         System.out.println(obj.getName() + " " + obj.getState());
         obj.start();
 
         System.out.println(obj.getName() + " " + obj.getState());
 
         try {
-            Thread.sleep(5);
+            Thread.sleep(1);
         } catch (InterruptedException e) {
             throw new MyException(e.getMessage());
         }
