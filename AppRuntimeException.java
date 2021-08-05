@@ -1,15 +1,15 @@
-public class MyException extends Exception{
-    public MyException() {
+public class AppRuntimeException extends RuntimeException{
+    public AppRuntimeException() {
 
     }
 
-    public MyException(String message) {
+    public AppRuntimeException(String message) {
         super("My exception: thread is interrupted");
     }
 
     @Override
     public String toString() {
-        return "MyException [ "
+        return "AppRuntimeException [ "
                 + "message = " + getMessage()
                 + "] ";
     }

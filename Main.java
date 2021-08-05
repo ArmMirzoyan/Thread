@@ -1,6 +1,6 @@
 public class Main {
 
-    public static void main(String[] args) throws MyException {
+    public static void main(String[] args) throws AppRuntimeException {
         System.out.println("Thread " + Thread.currentThread().getName() + " ");
         System.out.println(Thread.currentThread().getName() + " is a " + Thread.currentThread().getState());
 
@@ -13,7 +13,7 @@ public class Main {
         try {
             Thread.sleep(1);
         } catch (InterruptedException e) {
-            throw new MyException(e.getMessage());
+            throw new AppRuntimeException(e.getMessage());
         }
         System.out.println(obj.getName() + " " + obj.getState());
 
@@ -23,7 +23,7 @@ public class Main {
         try {
             obj.join();
         } catch (InterruptedException e) {
-            throw new MyException(e.getMessage());
+            throw new AppRuntimeException(e.getMessage());
         }
 
         System.out.println(obj.getName() + " " + obj.getState());
